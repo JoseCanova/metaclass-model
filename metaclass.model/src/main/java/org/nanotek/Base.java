@@ -8,7 +8,15 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.function.Supplier;
 
-
+/**
+ * The Base interface serves as a foundational abstraction for classes that need common 
+ * functionality such as object creation, UUID generation, serialization, and comparison. 
+ * It uses a combination of generics, default methods, and static methods to 
+ * provide flexible and reusable logic that can be easily extended by implementing classes. 
+ * The interface ensures that implementing classes can be compared and serialized, 
+ * and it provides utility methods for object creation and manipulation.
+ * @param <K>
+ */
 public interface Base<K extends Base<?>> extends Serializable , KongSupplier<K> , Comparable<K>{
 
 	static String hash = "35454B055CC325EA1AF2126E27707052";

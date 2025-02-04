@@ -8,11 +8,11 @@ import org.nanotek.MutableIdentity;
 import org.nanotek.meta.util.UUIDStringId;
 import org.nanotek.meta.validation.MetaClassDefaultValidationGroup;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
@@ -27,8 +27,19 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
 import lombok.AllArgsConstructor;
 
+/**
+ * The MetaClass serves as a base class for metadata models, 
+ * providing fields and methods to manage the identity, class name, and metadata attributes. 
+ * It uses a combination of annotations and generics to facilitate database operations, 
+ * JSON serialization, and validation. 
+ * The use of Lombok and Jakarta Persistence annotations helps 
+ * reduce boilerplate code and manage database relationships effectively.
+ * @param <K>
+ * @param <T>
+ */
 @MappedSuperclass
 @JsonInclude(value = Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 @AllArgsConstructor
 public class MetaClass<K extends MetaClass<K, T> , T extends MetaClassAttribute<?>> 
  implements  IdBase<K,String> , MutableIdentity<String> , IClass {
@@ -74,21 +85,6 @@ public class MetaClass<K extends MetaClass<K, T> , T extends MetaClassAttribute<
 		this.className = className;
 		this.identity = identity;
 	}
-
-//	public MetaClass(String className, 
-//			List<T> metaAttributes) {
-//		super();
-//		this.className = className;
-//		this.metaAttributes = Optional.ofNullable(metaAttributes).orElse(new ArrayList<>());
-//		postConstruct();
-//	}
-
-	
-	/*
-	 * @SuppressWarnings("unchecked") protected void postConstruct() {
-	 * this.classifier = (@NotNull(groups = MetaClassDefaultValidationGroup.class)
-	 * C) Base.newInstance(MetaClassClassifier.class).get(); }
-	 */
 	
 	@Override
 	public String getClassName() {
@@ -100,15 +96,6 @@ public class MetaClass<K extends MetaClass<K, T> , T extends MetaClassAttribute<
 		this.className = className;
 	}
 
-	/*
-	 * public void addMetaRelationClass(MetaRelationClass mrc) {
-	 * this.classifier.addMetaRelationClass(mrc);
-	 * 
-	 * }
-	 * 
-	 * @JsonIgnore public List<MetaRelationClass> getMetaRelationsClasses() { return
-	 * this.classifier.getMetaRelationsClasses(); }
-	 */
 	public MetaIdentity getIdentity() {
 		return identity;
 	}
@@ -116,13 +103,6 @@ public class MetaClass<K extends MetaClass<K, T> , T extends MetaClassAttribute<
 	public void setIdentity(MetaIdentity identity) {
 		this.identity = identity;
 	}
-
-	
-	/*
-	 * public C getClassifier() { return classifier; }
-	 * 
-	 * public void setClassifier(C classifier) { this.classifier = classifier; }
-	 */
 
 	public String getId() {
 		return id;
