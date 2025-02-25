@@ -3,14 +3,12 @@ package org.nanotek.meta.model;
 import org.nanotek.MutableIdentity;
 import org.nanotek.meta.util.UUIDStringId;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
-import lombok.ToString;
 
-@MappedSuperclass
-@ToString
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class MetaClassAttribute<T extends MetaClassAttribute<T>>
 implements IdBase<T,String> , MutableIdentity<String> {
 

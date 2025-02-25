@@ -10,12 +10,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Transient;
-import lombok.ToString;
 
 @Entity
 //TODO: Verify best strategy for class attribute. usage for Class.forName is preferable than alter codec for Model MongoDb persistence.
 //TODO: Implement a "className" attribute that conforms with transient attribute clazz fullName
-@ToString
 public class RdbmsMetaClassAttribute 
 extends MetaClassAttribute<RdbmsMetaClassAttribute> implements Serializable {
 

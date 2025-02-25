@@ -25,7 +25,6 @@ import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
-import lombok.AllArgsConstructor;
 
 /**
  * The MetaClass serves as a base class for metadata models, 
@@ -40,7 +39,6 @@ import lombok.AllArgsConstructor;
 @MappedSuperclass
 @JsonInclude(value = Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@AllArgsConstructor
 public class MetaClass<K extends MetaClass<K, T> , T extends MetaClassAttribute<?>> 
  implements  IdBase<K,String> , MutableIdentity<String> , IClass {
 

@@ -12,16 +12,10 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
 import schemacrawler.schema.PrimaryKey;
 import schemacrawler.schema.TableConstraintColumn;
 
 @Entity
-@Data
-@EqualsAndHashCode
-@ToString
 public class MetaIdentity implements 
 IdBase<MetaIdentity,String> , MutableIdentity<String>{
 

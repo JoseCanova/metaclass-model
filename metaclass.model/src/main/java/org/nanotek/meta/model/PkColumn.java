@@ -6,10 +6,8 @@ import org.nanotek.meta.util.UUIDStringId;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.EqualsAndHashCode;
 
 @Entity
-@EqualsAndHashCode
 public class PkColumn implements Serializable {
 
 	@Id
