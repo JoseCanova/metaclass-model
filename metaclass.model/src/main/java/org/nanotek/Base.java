@@ -111,11 +111,11 @@ public interface Base<K extends Base<?>> extends Serializable , KongSupplier<K> 
 	}
 
 	static <K extends Base<?>> Optional<K> NULL_VALUE() {
-		return Optional.empty();
+		return Optional.<K>empty();
 	}
 
 	static <K extends Base<?>> Optional<K> NULL_VALUE(Class<K> clazz) {
-		return Optional.empty();
+		return Optional.<K>empty();
 	}
 	
 	@Override
