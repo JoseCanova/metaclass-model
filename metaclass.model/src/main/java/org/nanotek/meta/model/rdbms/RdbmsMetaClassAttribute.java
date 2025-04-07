@@ -13,7 +13,6 @@ import jakarta.persistence.Transient;
 
 @Entity
 //TODO: Verify best strategy for class attribute. usage for Class.forName is preferable than alter codec for Model MongoDb persistence.
-//TODO: Implement a "className" attribute that conforms with transient attribute clazz fullName
 public class RdbmsMetaClassAttribute 
 extends MetaClassAttribute<RdbmsMetaClassAttribute> implements Serializable {
 
