@@ -128,19 +128,13 @@ implements IRdbmsClass{
 	public void setRdbmsClass(RdbmsClass rdbmsClass) {
 		this.rdbmsClass = rdbmsClass;
 	}
-
+	
 	/**
 	 * 
 	 * @return true if all is ok with RdbmsMetaclass construction of pk verification.
 	 */
 	public boolean isHasPrimaryKey() {
 			return  this.identity !=null;
-	}
-
-	@Override
-	public String toString() {
-		return "RdbmsMetaClass [tableName=" + tableName + ", rdbmsClass=" + rdbmsClass + ", className=" + className
-				+ "]";
 	}
 
 	public List<RdbmsMetaClassForeignKey> getRdbmsForeignKeys() {
@@ -150,7 +144,18 @@ implements IRdbmsClass{
 	public void setRdbmsForeignKeys(List<RdbmsMetaClassForeignKey> rdbmsForeignKeys) {
 		this.rdbmsForeignKeys = rdbmsForeignKeys;
 	}
+
+	public List<RdbmsIndex> getRdbmsIndexes() {
+		return rdbmsIndexes;
+	}
+
+	public void setRdbmsIndexes(List<RdbmsIndex> rdbmsIndexes) {
+		this.rdbmsIndexes = rdbmsIndexes;
+	}
 	
-	
-	
+	@Override
+	public String toString() {
+		return "RdbmsMetaClass [tableName=" + tableName + ", rdbmsClass=" + rdbmsClass + ", className=" + className
+				+ "]";
+	}
 }
