@@ -13,6 +13,9 @@ public class RdbmsMetaClassForeignKey {
 	@JsonProperty("columnName")
 	private String columnName;
 	
+	@JsonProperty("joinTableName")
+	private String joinTableName;
+	
 	@JsonProperty("joinColumnName")
 	private String joinColumnName;
 	
@@ -38,15 +41,21 @@ public class RdbmsMetaClassForeignKey {
 		return joinColumnName;
 	}
 
+	
+
+	public String getJoinTableName() {
+		return joinTableName;
+	}
+
 	@Override
 	public String toString() {
-		return "RdbmsMetaClassForeignKey [tableName=" + tableName + ", columnName=" + columnName + ", joinColumnName="
-				+ joinColumnName + "]";
+		return "RdbmsMetaClassForeignKey [tableName=" + tableName + ", columnName=" + columnName + ", joinTableName="
+				+ joinTableName + ", joinColumnName=" + joinColumnName + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(columnName, joinColumnName, tableName);
+		return Objects.hash(columnName, joinColumnName, joinTableName, tableName);
 	}
 
 	@Override
@@ -59,7 +68,10 @@ public class RdbmsMetaClassForeignKey {
 			return false;
 		RdbmsMetaClassForeignKey other = (RdbmsMetaClassForeignKey) obj;
 		return Objects.equals(columnName, other.columnName) && Objects.equals(joinColumnName, other.joinColumnName)
-				&& Objects.equals(tableName, other.tableName);
+				&& Objects.equals(joinTableName, other.joinTableName) && Objects.equals(tableName, other.tableName);
 	}
+	
+	
+	
 
 }
