@@ -153,6 +153,16 @@ implements IRdbmsClass{
 		this.rdbmsIndexes = rdbmsIndexes;
 	}
 	
+	public Boolean isJoinMetaClass() {
+		return verifyIsJoinTableMetaClass();
+	}
+	
+	private boolean verifyIsJoinTableMetaClass() {
+		return this
+			.getRdbmsForeignKeys()
+			.size()==this.getMetaAttributes().size();
+	}
+	
 	@Override
 	public String toString() {
 		return "RdbmsMetaClass [tableName=" + tableName + ", rdbmsClass=" + rdbmsClass + ", className=" + className

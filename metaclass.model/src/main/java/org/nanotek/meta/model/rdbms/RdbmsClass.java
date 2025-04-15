@@ -5,8 +5,6 @@ import java.util.List;
 
 import org.nanotek.meta.model.rdbms.table.RdbmsSchemaTable;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import schemacrawler.schema.Table;
 
 public class RdbmsClass {
