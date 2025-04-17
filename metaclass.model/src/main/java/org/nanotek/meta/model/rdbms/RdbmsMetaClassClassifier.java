@@ -48,8 +48,8 @@ public class RdbmsMetaClassClassifier extends MetaClassClassifier<RdbmsMetaClass
 
 	//TODO: implement classification Class.
 	@Override
-	public <CR extends Base<?>> Optional<CR> classify(RdbmsMetaClass classified) {
-		return null;
+	public Optional<RdbmsMetaClass> classify(RdbmsMetaClass classified) {
+		return Optional.empty();
 	}
 	
 }

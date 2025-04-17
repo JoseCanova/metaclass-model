@@ -9,6 +9,6 @@ import org.nanotek.TagInterface;
 @FunctionalInterface
 public interface Classifier<CI> {
 	
-	<CR extends Base<?>> Optional<CR> classify(CI classified);
+	 Optional<CI> classify(CI classified);
 	
 }

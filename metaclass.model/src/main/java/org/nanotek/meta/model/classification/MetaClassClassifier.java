@@ -14,7 +14,7 @@ public class MetaClassClassifier<M extends MetaClass<M,?>> implements Base<M> , 
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	public <CR extends Base<?>> Optional<CR> classify(M classified) {
+	public Optional<M> classify(M classified) {
 		return Base.NULL_VALUE();
 	}
 
