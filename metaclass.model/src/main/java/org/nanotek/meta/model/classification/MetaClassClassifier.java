@@ -6,7 +6,8 @@ import org.nanotek.Base;
 import org.nanotek.meta.model.Classifier;
 import org.nanotek.meta.model.MetaClass;
 
-public class MetaClassClassifier<M extends MetaClass<M,?>> implements Base<M> , Classifier<M> {
+public class MetaClassClassifier<M extends MetaClass<M,?>>
+implements Base<M> , Classifier<M> {
 
 	/**
 	 * 

@@ -17,7 +17,7 @@ public class JoinTableClassifier extends MetaClassClassifier<RdbmsMetaClass> {
 			return Optional.of (classified);
 		return Optional.<RdbmsMetaClass>empty();
 	}
-
+//TODO: optimize this algorithm
 	private boolean verifyClassForeignKeys(RdbmsMetaClass classified) {
 		int counter = classified.getRdbmsForeignKeys().size();
 		if(counter>0 && classified.getRdbmsForeignKeys().size() == classified.getMetaAttributes().size()){
