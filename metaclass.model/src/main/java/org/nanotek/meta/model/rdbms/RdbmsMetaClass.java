@@ -153,14 +153,9 @@ implements IRdbmsClass{
 		this.rdbmsIndexes = rdbmsIndexes;
 	}
 	
+	//TODO: refactor classifier out of this class in 'future'
 	public Boolean isJoinMetaClass() {
-		return verifyIsJoinTableMetaClass();
-	}
-	
-	private boolean verifyIsJoinTableMetaClass() {
-		return this
-			.getRdbmsForeignKeys()
-			.size()==this.getMetaAttributes().size();
+		return new JoinTableClassifier().classify(this).isPresent();
 	}
 	
 	@Override
