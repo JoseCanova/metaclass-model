@@ -19,7 +19,7 @@ public class JoinTableClassifier extends MetaClassClassifier<RdbmsMetaClass> {
 	}
 //TODO: optimize this algorithm/need to verify also if each foreign key has 1 attribute linked (in case of single attribute primary key).
 	private boolean verifyClassForeignKeys(RdbmsMetaClass classified) {
-		int counter = classified.getRdbmsForeignKeys().size();
+		int counter = classified.getRdbmsForeignKeys() == null ?0:classified.getRdbmsForeignKeys().size();
 		if(counter>0 && classified.getRdbmsForeignKeys().size() == classified.getMetaAttributes().size()){
 			var attList = classified.getMetaAttributes();
 			for (var fk : classified.getRdbmsForeignKeys()) {
