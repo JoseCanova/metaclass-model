@@ -1,6 +1,7 @@
 package org.nanotek.meta.model.rdbms;
 
 import java.util.Objects;
+import java.util.Optional;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -20,6 +21,21 @@ public class RdbmsMetaClassForeignKey {
 	private String joinColumnName;
 	
 	public RdbmsMetaClassForeignKey() {
+	}
+
+	public RdbmsMetaClassForeignKey(RdbmsForeignKey foreignKey) {
+		postConstruct(foreignKey);
+	}
+
+	private void postConstruct(RdbmsForeignKey foreignKey) {
+		this.tableName = foreignKey.getMetaClass().getTableName();
+		this.joinTableName=foreignKey.getReferenceMetaClass().getTableName();
+		this.columnName= Optional
+						.ofNullable(foreignKey.metaClassAttribute )
+						.map(a -> a.getColumnName()).orElse(null);
+		this.joinColumnName=Optional
+							.ofNullable(foreignKey.referenceMetaClassAttribute)
+							.map(a -> a.getColumnName()).orElse(null);;
 	}
 
 	public RdbmsMetaClassForeignKey(String tableName, String columnName, String joinColumnName) {

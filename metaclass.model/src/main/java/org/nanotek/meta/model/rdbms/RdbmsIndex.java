@@ -1,9 +1,14 @@
 package org.nanotek.meta.model.rdbms;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+import schemacrawler.schema.Index;
+import schemacrawler.schema.IndexColumn;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonInclude(value = Include.NON_NULL)
@@ -24,6 +29,23 @@ public class RdbmsIndex{
 	
 	public RdbmsIndex() {
 	}
+	
+	public RdbmsIndex(Index index) {
+		postConstruct(index);
+	}
+
+	private void postConstruct(Index index) {
+		name = index.getName();
+		fullName = index.getFullName();
+		getColumnNames(index.getColumns());
+		isUnique = index.isUnique();}
+
+	private void getColumnNames(List<IndexColumn> columns) {
+		columnNames  = columns
+						.stream().map(c ->  c.getName())
+						.collect(Collectors.toList());
+	}
+
 
 	public RdbmsIndex(String name, String fullName, List<String> columnNames) {
 		super();
