@@ -14,11 +14,11 @@
         <schema-crawler-version>16.25.1</schema-crawler-version>
     </properties>
   <dependencies>
-    <dependency>
+    <!--<dependency>
         <groupId>jakarta.persistence</groupId>
         <artifactId>jakarta.persistence-api</artifactId>
         <version>3.1.0</version>
-    </dependency>
+    </dependency>-->
     <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-core</artifactId>
@@ -42,11 +42,6 @@
     <dependency>
             <groupId>us.fatehi</groupId>
             <artifactId>schemacrawler</artifactId>
-            <version>${schema-crawler-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>us.fatehi</groupId>
-            <artifactId>schemacrawler-postgresql</artifactId>
             <version>${schema-crawler-version}</version>
         </dependency>
   </dependencies>

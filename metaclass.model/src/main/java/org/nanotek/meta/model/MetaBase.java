@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 import org.nanotek.MutableIdentity;
 
-import jakarta.persistence.Id;
-
 public class MetaBase<K extends MetaBase<K,ID>,ID extends Serializable> implements  IdBase<K,ID> , MutableIdentity<ID>{
 
 	/**
@@ -13,7 +11,6 @@ public class MetaBase<K extends MetaBase<K,ID>,ID extends Serializable> implemen
 	 */
 	private static final long serialVersionUID = 1994647285984999840L;
 	
-	@Id
 	ID id;
 	
 	

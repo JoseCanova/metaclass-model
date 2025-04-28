@@ -5,34 +5,21 @@ import java.util.List;
 import java.util.Optional;
 
 import org.nanotek.MutableIdentity;
-import org.nanotek.meta.util.UUIDStringId;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import schemacrawler.schema.PrimaryKey;
 import schemacrawler.schema.TableConstraintColumn;
 
-@Entity
 public class MetaIdentity implements 
 IdBase<MetaIdentity,String> , MutableIdentity<String>{
 
-	@Id
-	@UUIDStringId
 	private String id;
 	
-	@Column(name="definition" , length=1000)
 	private String definition;
 	
-	@Column(name="short_name" , length=1000)
 	private String shortName;
 	
-	@Column(name="name" , length=1000)
 	private String name;
 	
-	@OneToMany(cascade=CascadeType.ALL)
 	private List<PkColumn> columns; 
 	
 	public MetaIdentity() {

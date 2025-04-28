@@ -1,19 +1,14 @@
 package org.nanotek.meta.model;
 
 import org.nanotek.MutableIdentity;
-import org.nanotek.meta.util.UUIDStringId;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import jakarta.persistence.Id;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MetaClassAttribute<T extends MetaClassAttribute<T>>
 implements IdBase<T,String> , MutableIdentity<String> {
 
-	@Id
-	@UUIDStringId
 	protected String id;
 	
 	@JsonProperty("name")

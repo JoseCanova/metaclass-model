@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.nanotek.MutableIdentity;
-import org.nanotek.meta.util.UUIDStringId;
 import org.nanotek.meta.validation.MetaClassDefaultValidationGroup;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -13,15 +12,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
@@ -36,7 +26,6 @@ import jakarta.validation.constraints.Null;
  * @param <K>
  * @param <T>
  */
-@MappedSuperclass
 @JsonInclude(value = Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MetaClass<K extends MetaClass<K, T> , T extends MetaClassAttribute<?>> 
@@ -44,15 +33,11 @@ public class MetaClass<K extends MetaClass<K, T> , T extends MetaClassAttribute<
 
 	private static final long serialVersionUID = -6730971114783577367L;
 
-	@Id
-    @UUIDStringId
-    @Column(length=36)
 	@NotEmpty(groups= {MetaClassDefaultValidationGroup.class})
 	private String id;
 	
 	@JsonProperty("className")
 	@NotEmpty(groups= {MetaClassDefaultValidationGroup.class})
-	@Column (name="class_name" , length=1000)
 	protected String className; 
 	
 	/*
@@ -63,14 +48,8 @@ public class MetaClass<K extends MetaClass<K, T> , T extends MetaClassAttribute<
 	 */
 	
 	@Null(groups= {MetaClassDefaultValidationGroup.class})
-	@OneToOne(cascade = CascadeType.ALL , optional = true , fetch = FetchType.LAZY)
-	@JoinTable(
-			  name = "metaclass_metaidentity_join", 
-			  joinColumns = @JoinColumn(name = "metaclass_id" , referencedColumnName = "id"), 
-			  inverseJoinColumns = @JoinColumn(name = "metaidentity_id",referencedColumnName = "id") )
 	protected MetaIdentity identity;
 	
-	@OneToMany(cascade=CascadeType.ALL)
 	protected List<T> metaAttributes;
 	
 	public MetaClass() {

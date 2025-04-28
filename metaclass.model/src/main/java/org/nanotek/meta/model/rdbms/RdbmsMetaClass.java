@@ -12,9 +12,6 @@ import org.nanotek.meta.validation.MetaClassDefaultValidationGroup;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import schemacrawler.schema.Table;
@@ -25,7 +22,6 @@ import schemacrawler.schema.Table;
 		return  metaAttributes !=null && metaAttributes.stream().filter(a -> a.isId()).count() > 0;
 	}
  */
-@Entity
 public class RdbmsMetaClass extends MetaClass<RdbmsMetaClass,RdbmsMetaClassAttribute> 
 implements IRdbmsClass{
 
@@ -33,20 +29,16 @@ implements IRdbmsClass{
 
 	@NotEmpty(groups= {MetaClassDefaultValidationGroup.class})
 	@JsonProperty("tableName")
-	@Column (name="table_name" , length=1000)
 	protected String tableName;
 	
 	//TODO: Refactor RdbmsClass to permits to be a persistent class on Spring Data Model.
 	@JsonIgnore
 	@NotNull(groups= {MetaClassDefaultValidationGroup.class})
-	@Transient
 	protected transient RdbmsClass rdbmsClass;
 	
-	@Transient
 	@JsonProperty("rdbmsForeignKeys")
 	protected transient List<RdbmsMetaClassForeignKey> rdbmsForeignKeys;
 
-	@Transient
 	@JsonProperty("rdbmsIndexes")
 	protected transient List<RdbmsIndex> rdbmsIndexes;
 	

@@ -8,10 +8,6 @@ import org.nanotek.meta.model.MetaClassAttribute;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Transient;
-
-@Entity
 //TODO: Verify best strategy for class attribute. usage for Class.forName is preferable than alter codec for Model MongoDb persistence.
 public class RdbmsMetaClassAttribute 
 extends MetaClassAttribute<RdbmsMetaClassAttribute> implements Serializable {
@@ -30,7 +26,6 @@ extends MetaClassAttribute<RdbmsMetaClassAttribute> implements Serializable {
 	@JsonProperty("sqlType")
 	protected String sqlType;
 	@JsonProperty("attributes")
-	@Transient
 	protected transient Map<String, Object> attributes;
 	@JsonProperty("isPartOfIndex")
 	protected boolean partOfIndex;
