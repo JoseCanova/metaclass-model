@@ -9,7 +9,7 @@ import java.util.UUID;
 import java.util.function.Supplier;
 
 /**
- * The Base interface serves as a foundational abstraction for classes that need common 
+ * The Base interface serves as a foundation abstraction for classes that need common 
  * functionality such as object creation, UUID generation, serialization, and comparison. 
  * It uses a combination of generics, default methods, and static methods to 
  * provide flexible and reusable logic that can be easily extended by implementing classes. 

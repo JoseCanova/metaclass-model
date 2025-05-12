@@ -8,7 +8,6 @@ import org.nanotek.meta.model.MetaClassAttribute;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-//TODO: Verify best strategy for class attribute. usage for Class.forName is preferable than alter codec for Model MongoDb persistence.
 public class RdbmsMetaClassAttribute 
 extends MetaClassAttribute<RdbmsMetaClassAttribute> implements Serializable {
 
