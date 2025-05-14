@@ -42,6 +42,9 @@ implements IRdbmsClass{
 	@JsonProperty("rdbmsIndexes")
 	protected transient List<RdbmsIndex> rdbmsIndexes;
 	
+	@JsonProperty("identityClassification")
+	protected String  identityClassification;
+	
 	public RdbmsMetaClass() {
 		super();
 	}
@@ -148,6 +151,14 @@ implements IRdbmsClass{
 	//TODO: refactor classifier out of this class in 'future'
 	public Boolean isJoinMetaClass() {
 		return new JoinTableClassifier().classify(this).isPresent();
+	}
+	
+	public String getIdentityClassification() {
+		return this.identityClassification;
+	}
+	
+	public void setIdentityClassification(String classification) {
+		 this.identityClassification = classification;
 	}
 	
 	@Override
