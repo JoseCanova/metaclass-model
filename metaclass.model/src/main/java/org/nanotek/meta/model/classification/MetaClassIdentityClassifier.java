@@ -38,11 +38,4 @@ public interface MetaClassIdentityClassifier {
 			}
 	}
 	
-	public static record MetaClassIdentityClassification(KeyClassification type) {
-	}
-	
-	public enum KeyClassification{
-		SIMPLE,
-		COMPOSITE
-	}
 }
